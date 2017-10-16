@@ -16,7 +16,7 @@ class Stock < ApplicationRecord
 
 		new_stock = Stock.new(ticker:look_up_stock.symbol,name:look_up_stock.name)
 		new_stock.last_price = look_up_stock.lastTrade
-
+		
 		new_stock
 		# look_up_stock = StockQuote::Stock.quote(ticker_symbol)
 		# return nil unless look_up_stock
@@ -27,10 +27,10 @@ class Stock < ApplicationRecord
 	end	
 
 	def price
-		closing_price = YahooFinance::get_standard_quotes( ticker_symbol)[ticker_symbol].lastTrade 
+		closing_price = YahooFinance::get_standard_quotes( ticker )[ticker].lastTrade 
 		return "#{closing_price} (closing)" if closing_price 
 
-		opening_price = YahooFinance::get_standard_quotes( ticker_symbol)[ticker_symbol].lastTrade 
+		opening_price = YahooFinance::get_standard_quotes( ticker)[ticker].open 
 		return "#{opening_price} (opening)" if opening_price
 		"Unavaliable"
 	end

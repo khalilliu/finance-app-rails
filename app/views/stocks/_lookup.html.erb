@@ -7,17 +7,21 @@
 				
 			</div>
 			<div class="col-md-2 col-xs-4">
-				<%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+				<%= button_tag(type: :submit, id:'look_btn', class: "btn btn-lg btn-success") do %>
 					<i class="fa fa-search"></i>Look up a stock
 				<% end %>
 			</div>
 		</div>
 	<% end %>
-	<% if @stock %>
+	<%= render 'common/spinner' %>
+	<% if @stock && @stock.name != 'N/A' %>
 		<div id="stock-lookup-results" class="well results-block">
+			
 			<strong>Symbol:</strong><%= @stock.ticker %>
 			<strong>Name:</strong><%= @stock.name %>
 			<strong>Price:</strong><%= @stock.price %>
 		</div>
+	<% elsif  @stock && @stock.name == 'N/A' %>
+		<div id="stock-lookup-errors">stock was not found</div>
 	<% end %>
 </div>
