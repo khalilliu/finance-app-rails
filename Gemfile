@@ -14,6 +14,11 @@ gem 'sqlite3'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+
+gem 'stock_quote', '~> 1.2', '>= 1.2.3'
+
+gem 'yahoofinance', '~> 1.2', '>= 1.2.2'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
