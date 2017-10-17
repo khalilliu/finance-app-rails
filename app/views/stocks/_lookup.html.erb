@@ -3,7 +3,7 @@
 	<%= form_tag search_stocks_path, remote: true, method: :get, id: "stock-lookup-form"  do %>
 		<div class="form-group row no-padding text-center col-md-12">
 			<div class="col-md-10 col-xs-8">
-				<%= text_field_tag :stock, params[:stock], placeholder: "stock ticker symbol", autofocus: true, class: "form-control search-box input-lg" %>
+				<%= text_field_tag :stock, params[:stock], placeholder: "stock ticker symbol", autofocus: true,class: "form-control search-box input-lg" %>
 				
 			</div>
 			<div class="col-md-2 col-xs-4">
@@ -13,6 +13,9 @@
 			</div>
 		</div>
 	<% end %>
+	<div class="well results-block">
+		<%= current_user.id %> | <%= current_user.email %>
+	</div>
 	<%= render 'common/spinner' %>
 	<% if @stock && @stock.name != 'N/A' %>
 		<div id="stock-lookup-results" class="well results-block">
@@ -20,6 +23,7 @@
 			<strong>Symbol:</strong><%= @stock.ticker %>
 			<strong>Name:</strong><%= @stock.name %>
 			<strong>Price:</strong><%= @stock.price %>
+			<%= link_to "add to my stocks", user_stocks_path(user:current_user, stock_ticker: @stock.ticker, stock_id:@stock.id ? @stock.id: ''), class:'btn btn-xs btn-success', method: :post %>
 		</div>
 	<% elsif  @stock && @stock.name == 'N/A' %>
 		<div id="stock-lookup-errors">stock was not found</div>

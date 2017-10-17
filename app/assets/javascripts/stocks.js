@@ -1,7 +1,7 @@
 
 
 function init_stock_lookup(){
-	$('#look_btn').on('click',function(){console.log('click')});
+	
 	$('#stock-lookup-form').on('ajax:before',function(ev,data,status){
 		show_spinner()
 	})
@@ -11,7 +11,7 @@ function init_stock_lookup(){
 	})
 
 	$('#stock-lookup-form').on('ajax:success',function(ev,data,status){
-		console.log(data);
+		
 		$('#stock-lookup').replaceWith(data);
 		init_stock_lookup();
 	})

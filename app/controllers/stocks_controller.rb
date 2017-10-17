@@ -6,6 +6,7 @@ class StocksController < ApplicationController
 		end
 
 		if @stock
+			# render json: @Stock
 			render partial: 'lookup'  
 			#this is important 在ajax请求成功之后,在重新渲染 lookup
 		else
