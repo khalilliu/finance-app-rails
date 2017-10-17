@@ -11,13 +11,15 @@ function init_stock_lookup(){
 	})
 
 	$('#stock-lookup-form').on('ajax:success',function(ev,data,status){
-		
+		console.log(data+'success')
 		$('#stock-lookup').replaceWith(data);
 		init_stock_lookup();
 	})
 
 
 	$('#stock-lookup-form').on('ajax:error',function(ev,xhr,status,error){
+
+		init_stock_lookup();
 		$('#stock-lookup-results').replaceWith(' ');
 		$('#stock-lookup-errors').replaceWith('stock was not found');
 	})
